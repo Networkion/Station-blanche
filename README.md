@@ -19,7 +19,7 @@ pip install -r requirements.txt
 -----
 # PDF generation: 
 
--> A pdf is created on demand by pypdf including the following information:
+-> A pdf is created on demand by reportlab including the following information:
 
 - hashfile (sha256 + md5)
 - filename
