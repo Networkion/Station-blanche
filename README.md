@@ -1,9 +1,9 @@
 # Station-blanche
 
-## How it work ?
+## How it work?
 
 
-## Installation
+## Installation:
 
 ```sh
 git clone https://github.com/Networkion/Station-blanche
@@ -11,27 +11,19 @@ cd Station-blanche
 pip install -r requirements.txt
 ```
 
-# Detection
+## Detection:
 
 - hashTable (thanks to VX-Underground to provide us 40M hashs)
-- Fonction parse
-- Règles yara (?)
-
+- Fonction parsing with lief lib (Thanks to @deadc0de for pointing it out to us)
 
 -----
+# PDF generation: 
 
-hash (sha256)<
-filename <
-path <
-type file
-PID
-Size
------
-<
-Maybe
->
-#####
-IMPOSSIBLE
+-> A pdf is created on demand by pypdf including the following information:
 
-nom / url / signature / famille
-#### 
+- hashfile (sha256 + md5)
+- filename
+- path
+- type file
+- PID
+- Size

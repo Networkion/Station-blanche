@@ -1,7 +1,7 @@
 #!usr/bin/env python3.11
 #coding:utf-8
 
-import lief, hashlib, pypdf
+import lief, hashlib, pypdf, os
 
 class Detection:
     
@@ -23,16 +23,30 @@ class Detection:
 
 
     def parseFile(self):
-        binary = self.file
-        
+        binary = lief.parse(self.file)
+        print(binary)
+
+        # PE 
+        if os.system("file {binary}") == "PE32+" || "PE32":
+            print(binary.dos_header)
+            print(binary.header)
+            print(binary.optional_header)
+        # ELF
+        elif os.system("file {binary}"): == "ELF32" || "ELF64"
+        # 
+        else:
+            return
+
     # Create a PDF
     def convertPdf():
         # Create a pdf with pyPDF
         # Name of the file
         # path system
-        # taille
-        # headers
-        # 
+        # Size
+        # headers (PE / ELF)
+        # Hash (MD5 + SHA-256)
+        # PID
+        #
 
     def main():
 
