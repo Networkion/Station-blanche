@@ -3,11 +3,27 @@
 
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph
 
 class createPDF:
     def create_pdf(file_name):
-        c = canvas.Canvas(file_name, pagesize=letter)
-        width, height = letter
+        doc = SimpleDocTemplate(file_name, pagesize=letter)
+        story = []
 
-        c.drawString(100, height - 100, "Génération de PDF par python set-up !")
-        c.save()
+        # Style pour le titre
+        title_style = ParagraphStyle(name="TitleStyle", fontSize=30, alignment=1, underline=True, textColor=colors.black)
+
+        # Ajouter le titre centré
+        title_text = "Networkion - Whitestation report"
+        title_paragraph = Paragraph(title_text, title_style)
+        story.append(title_paragraph)
+
+        # Ajouter du contenu supplémentaire ici si nécessaire
+        # ...
+
+        # Créer le PDF
+        doc.build(story)
+
+create_pdf("lol.pdf")
