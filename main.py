@@ -2,28 +2,26 @@
 #coding:utf-8
 
 import hashlib
-from pathlib import Path
 import pypdf
+from pathlib import Path
 
-def main():
+class Detection:
 
-
-
-
-def check(file):
-    with open ("hash.txt", "r") as hashList, (file,"r") as malware:
-        if hashsum in hash.txt == hashsum in malware:
-            print("Malware detected")
-        else:
-            print("Take care, nothing is wrong")
-
-def hashSum(file):
-    file = ""
-    file_content = open(file).read().encode()
-    hashFile = hashlib.sha256(file_content).hexdigest()
+    def hashSum(file):
+        file_content = open(file).read().encode()
+        return hashFile = hashlib.sha256(file_content).hexdigest()
 
 
-def convertPDF():
+    def checkFile(file):
+        with open ("hash.txt", "r") as hashList, (file,"r") as malware:
+            if hashsum in hash.txt == hashsum in malware:
+                print("Malware detected")
+            else:
+                print("Take care but nothing is wrong")
+
+    def convertPdf():
+    
+    def main():
 
 if __name__ == "__main__"
     main()
