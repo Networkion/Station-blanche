@@ -25,5 +25,3 @@ class createPDF:
 
         # Créer le PDF
         doc.build(story)
-
-create_pdf("lol.pdf")
