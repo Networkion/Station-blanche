@@ -19,9 +19,6 @@ class createPDF:
         title_text = "Networkion - Whitestation report"
         title_paragraph = Paragraph(title_text, title_style)
         story.append(title_paragraph)
-
-        # Ajouter du contenu supplémentaire ici si nécessaire
-        # ...
-
+        
         # Créer le PDF
         doc.build(story)

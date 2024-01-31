@@ -6,6 +6,7 @@ services:
     container_name: mongodb-instance
     ports:
       - "27017:27017"
+      
     healthcheck:
       test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
       interval: 10s
