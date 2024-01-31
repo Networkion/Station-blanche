@@ -1,0 +1,28 @@
+// yara rule 
+rule Detection_Maware{
+ meta:
+  
+   description="Détection de fichiers malveillants"
+   author = "le j"
+   date = "33/01"
+   
+strings
+ 
+ $malicious_string1 = {"hexadécimaux}
+
+ $malicious_string2 = "Malwaresignature"
+
+ $malicious_string3 = "SupiciousFunction()"
+
+condition:
+
+any of ($malicious_string1) or (malicious_string2) or malicious_string3
+
+all of them 
+
+
+
+
+
+
+}
