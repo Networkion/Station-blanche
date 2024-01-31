@@ -1,5 +1,6 @@
 #!usr/bin/env python3.11
 #coding:utf-8
+#author : Isis
 
 class Detection:
     
@@ -9,8 +10,9 @@ class Detection:
     # Check the file hash in SHA-256
     def hashSum(self):
         file_content = open(self.file).read().encode()
-        return hashFile = hashlib.sha256(file_content).hexdigest()
-
+        hashFile = hashlib.sha256(file_content).hexdigest()
+        return hashFile
+        
     # Check if the hash match with the hashTable
     def checkFile(self):
         with open ("hashes.txt", "r") as hashList, (self.file,"r") as malware:
@@ -25,12 +27,12 @@ class Detection:
         print(binary)
 
         # PE 
-        if os.system("file {binary}") == "PE32+" || "PE32":
+        if os.system("file {binary}") == "PE32+" | "PE32":
             print(binary.dos_header)
             print(binary.header)
             print(binary.optional_header)
         # ELF
-        elif os.system("file {binary}"): == "ELF32" || "ELF64"
+        elif os.system("file {binary}") == "ELF32" | "ELF64":
             print()
         else:
             return

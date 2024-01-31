@@ -15,6 +15,7 @@ pip install -r requirements.txt
 
 - hashTable (thanks to VX-Underground to provide us 40M hashs)
 - Fonction parsing with lief lib (Thanks to @deadc0de for pointing it out to us)
+- Yara rules
 
 -----
 # PDF generation: 
