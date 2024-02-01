@@ -11,7 +11,6 @@ class getFileHash:
     BUF_SIZE: int = 4096
 
     @staticmethod
-
     # Get SHA-256 hash of a file
     def get_hash_file(file_path: str) -> str:
         hash_value = hashlib.sha256()
@@ -21,6 +20,7 @@ class getFileHash:
         return hash_value.hexdigest()
 
 
+    @staticmethod
     # Get SHA-256 hashes of files in a directory
     def get_file_from_directory(directory_path: str) -> List[str]:
         hashes: List[str] = []
