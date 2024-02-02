@@ -10,7 +10,7 @@ class FileHash(object):
 
     def get_hash(self, path: str) -> str:
         """
-           Gets hash for a single file
+           Get hash for a single file
         """
 
         hash_value = hashlib.sha256()
@@ -24,6 +24,6 @@ class FileHash(object):
           Get SHA-256 hashes of files in a directory
         """
         if not os.path.isdir(dir):
-            raise ValueError(f"{dir} is not a valid directory")
+q            raise ValueError(f"{dir} is not a valid directory")
 
         return [self.get_hash(os.path.join(dir, x)) for x in os.listdir(dir)]
