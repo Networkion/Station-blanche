@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.1
+#!/usr/bin/env python3
 # coding:utf-8
 
 import hashlib
@@ -24,6 +24,6 @@ class FileHash(object):
           Get SHA-256 hashes of files in a directory
         """
         if not os.path.isdir(dir):
-q            raise ValueError(f"{dir} is not a valid directory")
+            raise ValueError(f"{dir} is not a valid directory")
 
         return [self.get_hash(os.path.join(dir, x)) for x in os.listdir(dir)]

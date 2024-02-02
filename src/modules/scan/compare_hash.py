@@ -1,16 +1,31 @@
 #!/usr/bin/env python3
 # coding:utf-8
 
+from pymongo import MongoClient
+from dotenv import load_dotenv
+import get_hash
 
 class verifyHash(object):
 
-    def query_in_database(self, query: str) -> str:
+    def query_in_database(self) -> str:
         """
         Query to NoSQL database
         """
-        return
+        file_hash: str = self.get_hash.FileHash.get_hash()
 
-    def compare_hash(self, hash: str) -> str:
+        mongo_client: str = MongoClient('127.0.0.1', 27027)
+        mongo_db: str = mongo_client['whitestation_db']
+
+        collection: str = mongo_db['hash_collection']
+        
+        result_query: str = collection.find_one({'Query': os.getenv('query')})
+        return result_query
+
+    def compare_hash(self, result_query: str, file_hash: str) -> str:
         """
         Compare hash in database
         """
+        if not result_query:
+            raise ValueError(f"{get_hash.FileHash.get_hash} is not found")
+        else:
+            return "[>] Hash found ! Malware detected."
