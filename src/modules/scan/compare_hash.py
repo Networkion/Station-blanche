@@ -26,6 +26,7 @@ class verifyHash(object):
         """
         Compare hash in database
         """
+
         if not result_query:
             assert ValueError(f"{file_hash} is not found")
         else:
