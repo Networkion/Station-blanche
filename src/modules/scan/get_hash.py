@@ -23,6 +23,7 @@ class FileHash(object):
         """
           Get SHA-256 hashes of files in a directory
         """
+        
         if not os.path.isdir(dir):
             raise ValueError(f"{dir} is not a valid directory")
 

@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 # coding:utf-8
 
-import tkinter
+import tkinter as tk
 
 from tkinter.constants import *
-tk = tkinter.Tk()
+window = tk.Tk()
+
+
+# Create GUI 
+
+class gui(object):
+
+    def first_screen(self) -> str:
+        return

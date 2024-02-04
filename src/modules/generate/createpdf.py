@@ -7,8 +7,9 @@ from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 
-class createPDF:
-    def create_pdf(file_name):
+class createPDF(object):
+
+    def create_pdf(file_name: str) -> str:
         doc = SimpleDocTemplate(file_name, pagesize=letter)
         story = []
 

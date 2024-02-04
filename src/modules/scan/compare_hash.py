@@ -3,6 +3,7 @@
 
 from pymongo import MongoClient
 from dotenv import load_dotenv
+import os
 import get_hash
 
 class verifyHash(object):
@@ -18,7 +19,7 @@ class verifyHash(object):
 
         collection: str = mongo_db['hash_collection']
         
-        result_query: str = collection.find_one({'Query': os.getenv('query')})
+        result_query: str = collection.find_one({'Query': os.getenv('QUERY')})
         return result_query
 
     def compare_hash(self, result_query: str, file_hash: str) -> str:
@@ -26,6 +27,6 @@ class verifyHash(object):
         Compare hash in database
         """
         if not result_query:
-            raise ValueError(f"{get_hash.FileHash.get_hash} is not found")
+            assert ValueError(f"{file_hash} is not found")
         else:
             return "[>] Hash found ! Malware detected."
