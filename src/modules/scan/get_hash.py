@@ -5,6 +5,7 @@ import hashlib
 import os
 from typing import List
 
+
 class FileHash(object):
     BUF_SIZE: int = 4096
 
@@ -19,12 +20,12 @@ class FileHash(object):
                 hash_value.update(byte_block)
         return hash_value.hexdigest()
 
-    def get_file_hashes(self, dir: str) -> List[str]:
+    def get_file_hashes(self, directory: str) -> List[str]:
         """
           Get SHA-256 hashes of files in a directory
         """
         
-        if not os.path.isdir(dir):
-            raise ValueError(f"{dir} is not a valid directory")
+        if not os.path.isdir(directory):
+            raise ValueError(f"{directory} is not a valid directory")
 
-        return [self.get_hash(os.path.join(dir, x)) for x in os.listdir(dir)]
+        return [self.get_hash(os.path.join(directory, x)) for x in os.listdir(directory)]

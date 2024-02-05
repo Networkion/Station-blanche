@@ -3,13 +3,12 @@
 
 import tkinter as tk
 
-from tkinter.constants import *
 window = tk.Tk()
 
 
 # Create GUI 
 
-class gui(object):
+class GuiWhitestation(object):
 
-    def first_screen(self) -> str:
+    def first_screen(self) -> None:
         return
