@@ -1,6 +1,6 @@
 # Station-blanche
 
-## How it work?
+## How it works?
 
 - Detection with HashTable (SHA-256), Yara rules and a EDR :p
 
@@ -19,9 +19,9 @@ And have fun :)
 
 ## Detection:
 
-- hashTable (thanks to VX-Underground, Malware Bazaar (CERT-PL) to provide us 40M hashs)
+- hashTable (thanks to VX-Underground, Malware Bazaar (CERT-PL) to provide us 40M hashes)
 - Yara rules
-- AV and EDRs
+- AV
 
 -----
 

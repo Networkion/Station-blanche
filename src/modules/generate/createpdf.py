@@ -2,16 +2,18 @@
 # coding:utf-8
 
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
 from reportlab.lib import colors
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 
 
 class PDFCreated(object):
 
+    def __init__(self):
+        self.doc = None
+
     @staticmethod
-    def create_pdf(self, file_name: str) -> None:
+    def create_pdf(file_name: str) -> None:
         doc = SimpleDocTemplate(file_name, pagesize=letter)
         story = []
 
