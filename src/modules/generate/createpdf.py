@@ -5,7 +5,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph
-
+from typing import List
 
 class PDFCreated(object):
 
@@ -15,13 +15,13 @@ class PDFCreated(object):
     @staticmethod
     def create_pdf(file_name: str) -> None:
         doc = SimpleDocTemplate(file_name, pagesize=letter)
-        story = []
+        story: List[str] = []
 
         # Title
-        title_style = ParagraphStyle(name="TitleStyle", fontSize=30, alignment=1, underline=True,
+        title_style: object = ParagraphStyle(name="TitleStyle", fontSize=30, alignment=1, underline=True,
                                      textColor=colors.black)
-        title_text = "Whitestation report"
-        title_paragraph = Paragraph(title_text, title_style)
+        title_text: str = "Whitestation report"
+        title_paragraph: object = Paragraph(title_text, title_style)
         story.append(title_paragraph)
 
         # Create PDF
