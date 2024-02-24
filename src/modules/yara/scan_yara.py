@@ -6,8 +6,8 @@ scanner = YaraScanner()
 scanner.track_yara_dir('modules/yara/rules')
 scanner.load_rules()
 
-# Ajout du scan du fichier 'a.py'
-if scanner.scan('../../../../../a.py'):
+# Ajout du scan du fichier 'import_hash.py'
+if scanner.scan('../../../../../import_hash.py'):
     pprint(scanner.scan_results)
 
 # Vérification si des fichiers YARA suivis ont changé

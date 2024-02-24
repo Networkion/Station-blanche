@@ -6,6 +6,16 @@ import os
 
 
 class VerifyHash(object):
+    @staticmethod
+    def compare_hash(result_query: str, file_hash: str) -> str:
+        """
+        Compare hash in database
+        """
+
+        if not result_query:
+            assert ValueError(f"{file_hash} is not found")
+        else:
+            return "[>] Hash found ! Malware detected."
 
     def __init__(self):
         self.get_hash = None
@@ -23,14 +33,3 @@ class VerifyHash(object):
 
         result_query: str = collection.find_one({'Query': os.getenv('QUERY (???)')})
         return result_query
-
-    @staticmethod
-    def compare_hash(result_query: str, file_hash: str) -> str:
-        """
-        Compare hash in database
-        """
-
-        if not result_query:
-            assert ValueError(f"{file_hash} is not found")
-        else:
-            return "[>] Hash found ! Malware detected."
