@@ -6,6 +6,10 @@ import os
 
 
 class VerifyHash(object):
+
+    def __init__(self):
+        self.get_hash = None
+
     @staticmethod
     def compare_hash(result_query: str, file_hash: str) -> str:
         """
@@ -16,9 +20,6 @@ class VerifyHash(object):
             assert ValueError(f"{file_hash} is not found")
         else:
             return "[>] Hash found ! Malware detected."
-
-    def __init__(self):
-        self.get_hash = None
 
     def query_in_database(self) -> str:
         """
@@ -31,5 +32,5 @@ class VerifyHash(object):
 
         collection = mongo_db['hash_collection']
 
-        result_query: str = collection.find_one({'Query': os.getenv('QUERY (???)')})
+        result_query: str = collection.find_one({'Query': ')})
         return result_query

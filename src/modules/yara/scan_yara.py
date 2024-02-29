@@ -2,7 +2,6 @@
 # coding:utf-8
 
 import os
-from pprint import pprint
 from yara_scanner import YaraScanner
 
 

@@ -1,12 +1,23 @@
 #!usr/bin/env python3
 # coding:utf-8
 
-import subprocess
+import argparse
+import os
+import sys
+
+modules_path = [
+    "./src/modules/generate",
+    "./src/modules/yara",
+    "./src/modules/yara"
+]
 
 
 def main():
-    # Appel du script scan_yara.py
-    subprocess.run(["python", "modules/yara/scan_yara.py"])
+    return
+
+
+def arg_parse():
+    parser = argparse.ArgumentParser(description="")
 
 
 if __name__ == "__main__":
