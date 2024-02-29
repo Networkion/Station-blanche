@@ -21,7 +21,7 @@ class VerifyHash(object):
         else:
             return "[>] Hash found ! Malware detected."
 
-    def query_in_database(self) -> str:
+    def query_in_database(self, file_hash: str) -> str:
         """
         Query to NoSQL database
         """
@@ -32,5 +32,5 @@ class VerifyHash(object):
 
         collection = mongo_db['hash_collection']
 
-        result_query: str = collection.find_one({'Query': ')})
+        result_query = collection.find_one({"hash": file_hash})
         return result_query
