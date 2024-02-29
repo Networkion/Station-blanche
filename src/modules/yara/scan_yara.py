@@ -1,15 +1,23 @@
+#!usr/bin/env python3
+# coding:utf-8
+
+import os
 from pprint import pprint
 from yara_scanner import YaraScanner
 
-scanner = YaraScanner()
-# tells the scanner to start tracking this yara file
-scanner.track_yara_dir('modules/yara/rules')
-scanner.load_rules()
 
-# Ajout du scan du fichier 'import_hash.py'
-if scanner.scan('../../../../../import_hash.py'):
-    pprint(scanner.scan_results)
+class Scanner(object):
 
-# Vérification si des fichiers YARA suivis ont changé
-if scanner.check_rules():
-    scanner.load_rules()
+    def __init__(self):
+        self.scanner = YaraScanner()
+        self.scanner.track_yara_dir('module/yara/rules')
+
+    def load_rules(self):
+        self.scanner.load_rules()
+        return "Rules loaded"
+
+    def scan_file(self, directory):
+        directory = os.path.abspath(directory)
+
+        if self.scanner.scan(directory):
+            return self.scanner.scan_results

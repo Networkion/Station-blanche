@@ -1,4 +1,4 @@
-#!usr/bin/env python3.11
+#!usr/bin/env python3
 # coding:utf-8
 
 from reportlab.lib.pagesizes import letter
@@ -7,7 +7,8 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from typing import List
 
-class PDFCreated(object):
+
+class PdfCreator(object):
 
     def __init__(self):
         self.doc = None
@@ -19,7 +20,7 @@ class PDFCreated(object):
 
         # Title
         title_style: object = ParagraphStyle(name="TitleStyle", fontSize=30, alignment=1, underline=True,
-                                     textColor=colors.black)
+                                             textColor=colors.black)
         title_text: str = "Whitestation report"
         title_paragraph: object = Paragraph(title_text, title_style)
         story.append(title_paragraph)
