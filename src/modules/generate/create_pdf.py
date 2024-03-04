@@ -10,7 +10,7 @@ class PdfCreator(object):
     def generate_pdf(input_file, output_file):
         options = {
             'header-html': 'header.html',
-            'footer-html': 'footer.html'
+            'footerhtml': 'footer.html'
         }
         pdfkit.from_file(input_file, output_file, options=options)
 
