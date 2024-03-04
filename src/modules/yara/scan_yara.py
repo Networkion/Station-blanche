@@ -19,4 +19,9 @@ class Scanner(object):
         directory = os.path.abspath(directory)
 
         if self.scanner.scan(directory):
-            return self.scanner.scan_results
+            if self.scanner.scan_results:
+                return "[>] Malware detected by YARA rules!"
+            else:
+                return "[!] No malware detected."
+        else:
+            raise Exception("[-] Error occurred during scanning.")

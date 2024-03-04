@@ -4,6 +4,7 @@ import argparse
 modules_path = [
     "./src/modules/generate",
     "./src/modules/yara",
+    "./src/modules/generate/"
 ]
 
 

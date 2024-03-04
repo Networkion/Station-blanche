@@ -20,16 +20,16 @@ class VerifyHash(object):
         else:
             return "[>] Hash found ! Malware detected."
 
+    @staticmethod
     def query_in_database(self, file_hash: str) -> str:
         """
         Query to NoSQL database
         """
-        hash_value = self.file_hash.get_hash(file_hash)
 
         mongo_client = MongoClient('mongodb', 27027)
         mongo_db = mongo_client['whitestation_db']
 
         collection = mongo_db['hash_collection']
 
-        result_query = collection.find_one({"hash": hash_value})
+        result_query = collection.find_one({"hash": file_hash})
         return result_query
