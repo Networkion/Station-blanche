@@ -9,6 +9,8 @@ modules_path = [
 
 def arg_parse():
     parser = argparse.ArgumentParser(description="A script for performing certain actions.")
+    parser.add_argument('-f','--file', help="Provide a single file")
+    parser.add_argument('-d','--directory', help="Provide a directory")
     parser.add_argument('-y', '--yara', action="store_true", help="Use yara rules")
     parser.add_argument('-s', '--scan', action="store_true", help="Scan with Hashtable")
     parser.add_argument('-e', '--export', action="store_true", help="Export the report in PDF")
