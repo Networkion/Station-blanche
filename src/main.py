@@ -22,14 +22,6 @@ def arg_parse():
     return parser.parse_args()
 
 
-def main(parser):
-    if parser.file:
-        process_input(parser.file, parser.yara, parser.scan, parser.export)
-
-    if parser.directory:
-        process_input(parser.directory, parser.yara, parser.scan, parser.export)
-
-
 def process_input(path, yara, scan, export, self=None):
     if os.path.isfile(path) or os.path.isdir(path):
         if scan:
@@ -46,6 +38,14 @@ def process_input(path, yara, scan, export, self=None):
             PdfCreator.generate_pdf()
     else:
         print("Invalid file or directory path:", path)
+
+
+def main(parser):
+    if parser.file:
+        process_input(parser.file, parser.yara, parser.scan, parser.export)
+
+    if parser.directory:
+        process_input(parser.directory, parser.yara, parser.scan, parser.export)
 
 
 if __name__ == "__main__":
