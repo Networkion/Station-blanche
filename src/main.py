@@ -2,6 +2,7 @@
 # coding:utf-8
 
 import argparse
+import os
 
 # Modules
 from modules.scan.get_hash import FileHash
@@ -22,18 +23,29 @@ def arg_parse():
 
 
 def main(parser):
-    if parser.scan:
-        print("[+] Scanning with Hashtable.")
-        file_hash = FileHash.get_hash(parser.directory)
-        VerifyHash.compare_hash(file_hash)
+    if parser.file:
+        process_input(parser.file, parser.yara, parser.scan, parser.export)
 
-    if parser.yara:
-        print("[+] Yara rules will be used.")
-        Scanner.scan_file(parser.file)
+    if parser.directory:
+        process_input(parser.directory, parser.yara, parser.scan, parser.export)
 
-    if parser.export:
-        print("[+] Exporting the report in PDF.")
-        PdfCreator.generate_pdf()
+
+def process_input(path, yara, scan, export, self=None):
+    if os.path.isfile(path) or os.path.isdir(path):
+        if scan:
+            print("[+] Scanning with Hashtable.")
+            file_hash = FileHash.get_hash(self, path=path)
+            VerifyHash.compare_hash(file_hash=file_hash, result_query=path)
+
+        if yara:
+            print("[+] Yara rules will be used.")
+            Scanner.scan_file(directory=path, file_hash=file_hash)
+
+        if export:
+            print("[+] Exporting the report in PDF.")
+            PdfCreator.generate_pdf()
+    else:
+        print("Invalid file or directory path:", path)
 
 
 if __name__ == "__main__":

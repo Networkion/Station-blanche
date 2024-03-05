@@ -11,7 +11,7 @@ class VerifyHash(object):
         self.file_hash = FileHash()
 
     @staticmethod
-    def compare_hash(result_query: str, file_hash: str) -> str:
+    def compare_hash(result_query, file_hash: str) -> str:
         """
         Compare hash in database
         """
