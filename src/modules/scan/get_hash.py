@@ -13,7 +13,6 @@ class FileHash(object):
         """
            Get hash for a single file
         """
-
         hash_value = hashlib.sha256()
         with open(path, "rb") as file:
             for byte_block in iter(lambda: file.read(self.BUF_SIZE), b""):
@@ -24,7 +23,6 @@ class FileHash(object):
         """
           Get SHA-256 hashes of files in a directory
         """
-        
         if not os.path.isdir(directory):
             raise ValueError(f"{directory} is not a valid directory")
 

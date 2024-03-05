@@ -21,7 +21,7 @@ class VerifyHash(object):
             return "[>] Hash found ! Malware detected."
 
     @staticmethod
-    def query_in_database(self, file_hash: str) -> str:
+    def query_in_database(file_hash: str) -> str:
         """
         Query to NoSQL database
         """
