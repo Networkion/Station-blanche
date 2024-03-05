@@ -25,6 +25,9 @@ class Scanner(object):
         return "Rules loaded"
 
     def scan_file(self, directory: str, file_hash: str) -> str:
+        """
+        Scan a file and return if it contains malware or not.
+        """
         directory = os.path.abspath(directory)
 
         if self.scanner.scan(directory):

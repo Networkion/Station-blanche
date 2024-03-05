@@ -2,7 +2,7 @@
 # coding:utf-8
 
 from pymongo import MongoClient
-from get_hash import FileHash
+from .get_hash import FileHash
 
 
 class VerifyHash(object):
