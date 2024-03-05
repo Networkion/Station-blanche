@@ -9,7 +9,8 @@ modules_path = [
 
 
 def arg_parse():
-    parser = argparse.ArgumentParser(description="A script for performing certain actions.")
+    parser = argparse.ArgumentParser(description="WhiteStation v1.0, script for scan with yara rules, hashtable and \
+                                                 generate a report pdf")
     parser.add_argument('-f','--file', help="Provide a single file")
     parser.add_argument('-d','--directory', help="Provide a directory")
     parser.add_argument('-y', '--yara', action="store_true", help="Use yara rules")
