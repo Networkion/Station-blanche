@@ -9,13 +9,14 @@ from typing import List
 class FileHash(object):
     BUF_SIZE: int = 4096
 
-    def get_hash(self, path: str) -> str:
+    @staticmethod
+    def get_hash(path: str, BUF_SIZE=BUF_SIZE) -> str:
         """
            Get hash for a single file
         """
         hash_value = hashlib.sha256()
         with open(path, "rb") as file:
-            for byte_block in iter(lambda: file.read(self.BUF_SIZE), b""):
+            for byte_block in iter(lambda: file.read(BUF_SIZE), b""):
                 hash_value.update(byte_block)
         return hash_value.hexdigest()
 
