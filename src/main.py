@@ -27,16 +27,18 @@ def process_input(path, yara, scan, export):
         if scan:
             print("[+] Scanning with Hashtable.")
             file_hash = FileHash().get_hash(path)
-            VerifyHash().compare_hash(file_hash, path)
+            print(file_hash)
+            return VerifyHash().compare_hash(file_hash, path)
 
         if yara:
             print("[+] Yara rules will be used.")
             file_hash = FileHash().get_hash(path)
-            Scanner().scan_file(path, file_hash)
+            return Scanner().scan_file(path, file_hash)
 
         if export:
             print("[+] Exporting the report in PDF.")
             PdfCreator().generate_pdf()
+
     else:
         print("Invalid file or directory path:", path)
 

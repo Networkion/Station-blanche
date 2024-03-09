@@ -1,4 +1,3 @@
-from time import sleep
 import pymongo
 
 client = pymongo.MongoClient("mongodb://127.0.0.1:27017/")
@@ -13,4 +12,4 @@ for hash_str in hashes:
     if hash_value:
         collection.insert_one({"hash": hash_value})
 
-print("Transfert des hachages terminé avec succès.")
+print("Hash transferred successfully")

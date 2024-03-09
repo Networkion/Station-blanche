@@ -8,7 +8,7 @@ from .get_hash import FileHash
 class VerifyHash(object):
 
     def __init__(self):
-        self.file_hash = FileHash()
+        self.file_hash = FileHash().get_hash()
 
     @staticmethod
     def compare_hash(result_query, file_hash: str) -> str:
@@ -25,7 +25,6 @@ class VerifyHash(object):
         """
         Query to NoSQL database
         """
-
         mongo_client = MongoClient('mongodb', 27027)
         mongo_db = mongo_client['whitestation_db']
 
