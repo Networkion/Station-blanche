@@ -7,8 +7,8 @@ from .get_hash import FileHash
 
 class VerifyHash(object):
 
-    def __init__(self):
-        self.file_hash = FileHash().get_hash()
+    def __init__(self, path):
+        self.file_hash = FileHash().get_hash(path)
 
     @staticmethod
     def compare_hash(result_query, file_hash: str) -> str:

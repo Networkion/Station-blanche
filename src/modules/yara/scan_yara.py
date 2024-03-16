@@ -2,6 +2,7 @@
 # coding:utf-8
 
 import os
+
 from pymongo import MongoClient
 from yara_scanner import YaraScanner
 
@@ -15,12 +16,18 @@ class Scanner(object):
 
     @staticmethod
     def database_info():
+        """
+        Create a NoSQL database
+        """
         client = MongoClient("mongodb://127.0.0.1:27017/")
         db = client["hashes_database"]
         collection = db["hash_collection"]
         return client, db, collection
 
     def load_rules(self):
+        """
+        Load rules from /rules
+        """
         self.scanner.load_rules()
         return "Rules loaded"
 

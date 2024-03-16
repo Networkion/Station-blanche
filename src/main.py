@@ -12,6 +12,9 @@ from modules.generate.create_pdf import PdfCreator
 
 
 def arg_parse():
+    """
+    Create parser for CLI utilisation
+    """
     parser = argparse.ArgumentParser(description="WhiteStation v1.0, script for scan with YARA rules, hashtable, \
                                                  and generate a report PDF")
     parser.add_argument('-f', '--file', help="Provide a single file", type=str)
@@ -23,12 +26,18 @@ def arg_parse():
 
 
 def process_input(path, yara, scan, export):
+    """
+    Process input
+    :param path: Path to the file
+    :param yara: Scanning with Yara rules
+    :param scan: Scanning with hashTable
+    :param export: Export in PDF the result
+    """
     if os.path.isfile(path) or os.path.isdir(path):
         if scan:
             print("[+] Scanning with Hashtable.")
             file_hash = FileHash().get_hash(path)
-            print(file_hash)
-            return VerifyHash().compare_hash(file_hash, path)
+            return VerifyHash(path).compare_hash(file_hash, path)
 
         if yara:
             print("[+] Yara rules will be used.")
@@ -44,6 +53,11 @@ def process_input(path, yara, scan, export):
 
 
 def main(parser):
+    """
+    Main function
+    :param parser: argument parser
+    :return:
+    """
     if parser.file:
         process_input(parser.file, parser.yara, parser.scan, parser.export)
 
