@@ -10,15 +10,15 @@ class VerifyHash(object):
     def __init__(self, path):
         self.file_hash = FileHash().get_hash(path)
 
-    @staticmethod
-    def compare_hash(result_query, file_hash: str) -> str:
+    def compare_hash(self, file_hash: str):
         """
         Compare hash in database
         """
+        result_query = self.query_in_database(file_hash)
         if not result_query:
             raise ValueError(f"{file_hash} is not found")
         else:
-            return "[>] Hash found ! Malware detected."
+            print("[>] Hash found ! Malware detected.")
 
     @staticmethod
     def query_in_database(file_hash: str) -> str:

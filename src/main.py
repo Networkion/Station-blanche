@@ -37,7 +37,7 @@ def process_input(path, yara, scan, export):
         if scan:
             print("[+] Scanning with Hashtable.")
             file_hash = FileHash().get_hash(path)
-            return VerifyHash(path).compare_hash(file_hash, path)
+            return VerifyHash(path).compare_hash(file_hash)
 
         if yara:
             print("[+] Yara rules will be used.")
