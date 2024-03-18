@@ -31,17 +31,18 @@ class Scanner(object):
         self.scanner.load_rules()
         return "Rules loaded"
 
-    def scan_file(self, directory: str, file_hash: str) -> str:
+    def scan_file(self, file_path: str, file_hash: str):
         """
         Scan a file and return if it contains malware or not.
         """
-        directory = os.path.abspath(directory)
+        file_path = os.path.abspath(file_path)
 
-        if self.scanner.scan(directory):
+        if self.scanner.scan(file_path):
+            print(file_path + " UWU")
             if self.scanner.scan_results:
                 self.collection.insert_one({"hash": file_hash})
-                return "[>] Malware detected by YARA rules!"
+                print("[>] Malware detected by YARA rules in file:", file_path)
             else:
-                return "[!] No malware detected."
+                print("[!] No malware detected in file:", file_path)
         else:
             raise Exception("[-] Error occurred during scanning.")

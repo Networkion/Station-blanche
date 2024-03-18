@@ -42,7 +42,7 @@ def process_input(path, yara, scan, export):
         if yara:
             print("[+] Yara rules will be used.")
             file_hash = FileHash().get_hash(path)
-            return Scanner().scan_file(path, file_hash)
+            return Scanner().scan_file(file_hash, path)
 
         if export:
             print("[+] Exporting the report in PDF.")
@@ -60,7 +60,7 @@ def process_input(path, yara, scan, export):
                 if yara:
                     print("[+] Yara rules will be used:", file_path)
                     file_hash = FileHash().get_hash(file_path)
-                    Scanner().scan_file(file_path, file_hash)
+                    # Scanner().scan_file(file_path, file_hash)
 
                 if export:
                     print("[+] Exporting the report in PDF for:", file_path)
