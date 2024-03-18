@@ -16,7 +16,7 @@ class VerifyHash(object):
         """
         result_query = self.query_in_database(file_hash)
         if not result_query:
-            raise ValueError(f"{file_hash} is not found")
+            print(f"[+] The hash '{file_hash}' is not found")
         else:
             print("[>] Hash found ! Malware detected.")
 
@@ -25,9 +25,8 @@ class VerifyHash(object):
         """
         Query to NoSQL database
         """
-        mongo_client = MongoClient('mongodb', 27027)
+        mongo_client = MongoClient("mongodb://127.0.0.1:27017/")
         mongo_db = mongo_client['whitestation_db']
-
         collection = mongo_db['hash_collection']
 
         result_query = collection.find_one({"hash": file_hash})

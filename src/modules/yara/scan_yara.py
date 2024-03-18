@@ -11,7 +11,7 @@ class Scanner(object):
 
     def __init__(self):
         self.scanner = YaraScanner()
-        self.scanner.track_yara_dir('modules/yara/rules')
+        self.scanner.track_yara_dir('./src/modules/yara/rules')
         self.client, self.db, self.collection = self.database_info()
 
     @staticmethod
