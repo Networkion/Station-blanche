@@ -6,7 +6,6 @@ from .get_hash import FileHash
 
 
 class VerifyHash(object):
-
     def __init__(self, path):
         self.file_hash = FileHash().get_hash(path)
 
@@ -18,16 +17,23 @@ class VerifyHash(object):
         if not result_query:
             print(f"[+] The hash '{file_hash}' is not found")
         else:
-            print("[>] Hash found ! Malware detected.")
+            print("[>] Hash found! Malware detected.")
 
     @staticmethod
-    def query_in_database(file_hash: str) -> str:
+    def query_in_database(file_hash: str):
         """
         Query to NoSQL database
         """
-        mongo_client = MongoClient("mongodb://127.0.0.1:27017/")
-        mongo_db = mongo_client['whitestation_db']
-        collection = mongo_db['hash_collection']
+        try:
+            mongo_client = MongoClient("mongodb://127.0.0.1:27017/")
+            db = mongo_client["hashes_database"]
+            collection = db["hash_collection"]
+            result_query = collection.find_one({"hash": file_hash})
 
-        result_query = collection.find_one({"hash": file_hash})
-        return result_query
+            if result_query:
+                return result_query
+            else:
+                return None
+        except Exception as e:
+            print(f"Error querying database: {e}")
+            return None

@@ -53,7 +53,7 @@ def process_input(path, yara, scan):
                 if yara:
                     print("[+] Yara rules will be used:", file_path)
                     file_hash = FileHash().get_hash(file_path)
-                    # Scanner().scan_file(file_path, file_hash)
+                    Scanner().scan_file(file_path, file_hash)
 
 
 def main(parser):
