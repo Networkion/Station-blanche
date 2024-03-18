@@ -1,0 +1,7 @@
+*
+.idea
+*./venv
+*./src/modules/yara/__pycache__/
+*./src/modules/generate/__pycache__/
+*./src/modules/scan/__pycache__/
+
