@@ -18,7 +18,7 @@ def arg_parse():
                                                  and generate a report PDF")
     parser.add_argument('-f', '--file', help="Provide a single file", type=str)
     parser.add_argument('-d', '--directory', help="Provide a directory")
-    parser.add_argument('-y', '--yara', action="store_true", help="Use YARA rules")
+    parser.add_argument('-y', '--yara', action="store_true", help="Use YARA rules for executable (exe)")
     parser.add_argument('-s', '--scan', action="store_true", help="Scan with Hashtable")
     return parser.parse_args()
 
