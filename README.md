@@ -19,7 +19,7 @@ python /src/database/import_hash.py
 ## Detection:
 
 - hashTable (thanks to VX-Underground, Malware Bazaar (CERT-PL) to provide us hashes)
-- Yara rules (Thanks to Cyb3r0ps)
+- Yara rules (Thanks to Cyb3r0ps) => Scan only .exe
 - ClamAV
 
 -----
