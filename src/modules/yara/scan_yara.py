@@ -38,7 +38,7 @@ class Scanner(object):
         file_path = os.path.abspath(file_path)
 
         if self.scanner.scan(file_path):
-            print(file_path + " UWU")
+            print(file_path)
             if self.scanner.scan_results:
                 self.collection.insert_one({"hash": file_hash})
                 print("[>] Malware detected by YARA rules in file:", file_path)

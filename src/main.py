@@ -30,30 +30,40 @@ def process_input(path, yara, scan):
     :param yara: Scanning with Yara rules
     :param scan: Scanning with hashTable
     """
-    if os.path.isfile(path):
-        if scan:
-            print("[+] Scanning with Hashtable.")
-            file_hash = FileHash().get_hash(path)
-            return VerifyHash(path).compare_hash(file_hash)
+    path = os.path.abspath(path)
 
-        if yara:
-            print("[+] Yara rules will be used.")
-            file_hash = FileHash().get_hash(path)
-            return Scanner().scan_file(file_hash, path)
+    if os.path.exists(path):
+        if os.path.isfile(path):
+            if scan:
+                print("[+] Scanning with Hashtable:", path)
+                file_hash = FileHash().get_hash(path)
+                VerifyHash(path).compare_hash(file_hash)
 
-    elif os.path.isdir(path):
-        for root, dirs, files in os.walk(path):
-            for file in files:
-                file_path = str(os.path.join(root, file))
-                if scan:
-                    print("[+] Scanning with Hashtable:", file_path)
-                    file_hash = FileHash().get_hash(file_path)
-                    VerifyHash(file_path).compare_hash(file_hash)
+            if yara:
+                print("[+] Yara rules will be used:", path)
+                file_hash = FileHash().get_hash(path)
+                Scanner().scan_file(path, file_hash)
 
-                if yara:
-                    print("[+] Yara rules will be used:", file_path)
-                    file_hash = FileHash().get_hash(file_path)
-                    Scanner().scan_file(file_path, file_hash)
+        elif os.path.isdir(path):
+            if scan:
+                print("[+] Scanning files in directory:", path)
+                for root, dirs, files in os.walk(path):
+                    for file in files:
+                        file_path = str(os.path.join(root, file))
+                        print("[+] Scanning with Hashtable:", file_path)
+                        file_hash = FileHash().get_hash(file_path)
+                        VerifyHash(file_path).compare_hash(file_hash)
+
+            if yara:
+                print("[+] Yara rules will be used for files in directory:", path)
+                for root, dirs, files in os.walk(path):
+                    for file in files:
+                        file_path = str(os.path.join(root, file))
+                        print("[+] Yara rules will be used for file:", file_path)
+                        file_hash = FileHash().get_hash(file_path)
+                        Scanner().scan_file(file_path, file_hash)
+    else:
+        print("[-] File or directory not found:", path)
 
 
 def main(parser):
