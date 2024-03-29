@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # coding:utf-8
 
+from colorama import Fore
 from pymongo import MongoClient
 from .get_hash import FileHash
 
@@ -15,9 +16,9 @@ class VerifyHash(object):
         """
         result_query = self.query_in_database(file_hash)
         if not result_query:
-            print(f"[+] The hash '{file_hash}' is not found")
+            print(Fore.GREEN + f"[+] The hash '{file_hash}' is not found")
         else:
-            print("[>] Hash found! Malware detected.")
+            print(Fore.RED + "[>] Hash found! Malware detected.")
 
     @staticmethod
     def query_in_database(file_hash: str):
@@ -35,5 +36,5 @@ class VerifyHash(object):
             else:
                 return None
         except Exception as e:
-            print(f"Error querying database: {e}")
+            print(Fore.RED + f"Error querying database: {e}")
             return None

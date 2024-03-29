@@ -4,6 +4,8 @@
 import argparse
 import os
 
+from colorama import Fore
+
 # Modules
 from modules.scan.get_hash import FileHash
 from modules.scan.compare_hash import VerifyHash
@@ -35,35 +37,35 @@ def process_input(path, yara, scan):
     if os.path.exists(path):
         if os.path.isfile(path):
             if scan:
-                print("[+] Scanning with Hashtable:", path)
+                print(Fore.BLUE + "[+] Scanning with Hashtable:", path)
                 file_hash = FileHash().get_hash(path)
                 VerifyHash(path).compare_hash(file_hash)
 
             if yara:
-                print("[+] Yara rules will be used:", path)
+                print(Fore.YELLOW + "[+] Yara rules will be used:", path)
                 file_hash = FileHash().get_hash(path)
                 Scanner().scan_file(path, file_hash)
 
         elif os.path.isdir(path):
             if scan:
-                print("[+] Scanning files in directory:", path)
+                print(Fore.CYAN + "[+] Scanning files in directory:", path)
                 for root, dirs, files in os.walk(path):
                     for file in files:
                         file_path = str(os.path.join(root, file))
-                        print("[+] Scanning with Hashtable:", file_path)
+                        print(Fore.BLUE + "[+] Scanning with Hashtable:", file_path)
                         file_hash = FileHash().get_hash(file_path)
                         VerifyHash(file_path).compare_hash(file_hash)
 
             if yara:
-                print("[+] Yara rules will be used for files in directory:", path)
+                print(Fore.CYAN + "[+] Yara rules will be used for files in directory:", path)
                 for root, dirs, files in os.walk(path):
                     for file in files:
                         file_path = str(os.path.join(root, file))
-                        print("[+] Yara rules will be used for file:", file_path)
+                        print(Fore.YELLOW + "[+] Yara rules will be used for file:", file_path)
                         file_hash = FileHash().get_hash(file_path)
                         Scanner().scan_file(file_path, file_hash)
     else:
-        print("[-] File or directory not found:", path)
+        print(Fore.RED + "[-] File or directory not found:", path)
 
 
 def main(parser):

@@ -3,6 +3,7 @@
 
 import os
 
+from colorama import Fore
 from pymongo import MongoClient
 from yara_scanner import YaraScanner
 
@@ -38,11 +39,10 @@ class Scanner(object):
         file_path = os.path.abspath(file_path)
 
         if self.scanner.scan(file_path):
-            print(file_path)
             if self.scanner.scan_results:
                 self.collection.insert_one({"hash": file_hash})
-                print("[>] Malware detected by YARA rules in file:", file_path)
+                print(Fore.RED + "[>] Malware detected by YARA rules in file:", file_path)
             else:
-                print("[!] No malware detected in file:", file_path)
+                print(Fore.GREEN + "[!] No malware detected in file:", file_path)
         else:
-            raise Exception("[-] Error occurred during scanning.")
+            raise Exception(Fore.RED + "[-] Error occurred during scanning.")
