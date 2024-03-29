@@ -5,6 +5,10 @@
 - Detection with HashTable (SHA-256), Yara rules and a Antivirus :p
   Give a path and the app scan & detect.
 
+## Pre-requisites:
+
+- Docker
+- Python3
 
 ## Installation:
 
@@ -20,12 +24,10 @@ python /src/database/import_hash.py
 
 - hashTable (thanks to VX-Underground, Malware Bazaar (CERT-PL) to provide us hashes)
 - Yara rules (Thanks to Cyb3r0ps) => Scan only .exe
-- ClamAV
 
 -----
 
 # How to use ?
-
 
 ```ssh
 python3 main.py -f [file] -d [directory] --scan --yara
