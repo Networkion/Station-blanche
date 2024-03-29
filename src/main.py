@@ -11,13 +11,20 @@ from modules.scan.get_hash import FileHash
 from modules.scan.compare_hash import VerifyHash
 from modules.yara.scan_yara import Scanner
 
+BANNER = (
+    "                ___  ___            __   __       \n"
+    "    |  | |__| |  |  |__     |  | | |  \\ /  \\ |  | \n"
+    "    |/\\| |  | |  |  |___    |/\\| | |__/ \\__/ |/\\| \n"
+)
+print(BANNER)
+
 
 def arg_parse():
     """
     Create parser for CLI utilisation
     """
-    parser = argparse.ArgumentParser(description="WhiteStation v1.0, script for scan with YARA rules, hashtable, \
-                                                 and generate a report PDF")
+    parser = argparse.ArgumentParser(description=Fore.LIGHTMAGENTA_EX + "WhiteWidow v1.0, script for scan with YARA \
+                                                                       rules, hashtable, and generate a report PDF")
     parser.add_argument('-f', '--file', help="Provide a single file", type=str)
     parser.add_argument('-d', '--directory', help="Provide a directory")
     parser.add_argument('-y', '--yara', action="store_true", help="Use YARA rules for executable (exe)")
